@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Order {
   String documentId;
   String userEmail;
   bool isAccepted;
   bool isReviewed;
-  int createdDate;
+  dynamic createdDate;
   String productId;
   String productName;
   Order({

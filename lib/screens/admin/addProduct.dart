@@ -2,7 +2,6 @@
 
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dr_bankawy/services/store.dart';
 
@@ -31,6 +30,7 @@ class AddProduct extends StatelessWidget {
       body: Form(
         key: _globalKey,
         child: ListView(
+          // padding: EdgeInsets.all(20),
           children: <Widget>[
             SizedBox(
               height: mobileSize.height * 0.1,
@@ -178,7 +178,7 @@ class AddProduct extends StatelessWidget {
             ),
             // Todo: add button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 90),
+              padding: const EdgeInsets.all(8.0),
               child: FlatButton(
                 onPressed: () {
                   if (true) {
@@ -248,7 +248,7 @@ class AddProduct extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    // fontSize: 22,
                   ),
                 ),
               ),
