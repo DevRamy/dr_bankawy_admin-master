@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hint;
-  final TextInputType type;
-  final Function onClick;
-  String _errorMessage(String str) {
+  final TextEditingController controller;
+  String errorMessage(String str) {
     switch (hint) {
       case 'Enter your name':
         return 'Name is empty !';
@@ -19,28 +18,16 @@ class CustomTextField extends StatelessWidget {
   }
 
   const CustomTextField(
-      {Key key,
-      @required this.type,
-      @required this.onClick,
-      @required this.hint})
+      {Key key, @required this.controller, @required this.hint})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: TextFormField(
-        validator: (value) {
-          if (value.isEmpty) {
-            return _errorMessage(hint);
-          }
-          // return '';
-        },
-        onSaved: onClick,
-        obscureText: hint == 'Enter your password' ? true : false,
+        controller: controller,
+        obscureText: hint == 'كلمة المرور' ? true : false,
         cursorColor: kThiredColor,
-        keyboardType: type,
-        maxLines: null,
-        minLines: 1,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(2),
           hintText: hint,

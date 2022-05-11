@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
 import 'package:dr_bankawy/provider/adminMode.dart';
 import 'package:dr_bankawy/screens/admin/adminHome.dart';
@@ -24,13 +24,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String _email, password;
-
   final _auth = Auth();
 
   final adminPassword = 'Admin1234';
 
   bool keepMeLoggedIn = false;
+
+  final TextEditingController email_Controller = TextEditingController();
+  final TextEditingController password_Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,18 +68,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: height * .1,
                       ),
                       CustomTextField(
-                        onClick: (value) {
-                          _email = value;
-                        },
+                        controller: email_Controller,
                         hint: 'البريد الإلكتروني',
                       ),
                       SizedBox(
                         height: height * .03,
                       ),
                       CustomTextField(
-                        onClick: (value) {
-                          password = value;
-                        },
+                        controller: password_Controller,
                         hint: 'كلمة المرور',
                       ),
                       Padding(
@@ -87,7 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Theme(
-                              data: ThemeData(unselectedWidgetColor: Colors.white),
+                              data: ThemeData(
+                                  unselectedWidgetColor: Colors.white),
                               child: Checkbox(
                                 checkColor: kThiredColor,
                                 activeColor: kMainColor,
@@ -150,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           )
                         ],
                       ),
-                                  ],
+                    ],
                   ),
                 ),
               ],
@@ -168,7 +166,8 @@ class _LoginScreenState extends State<LoginScreen> {
       widget.globalKey.currentState.save();
 
       try {
-        await _auth.signIn(_email.trim(), password.trim());
+        await _auth.signIn(
+            email_Controller.text.trim(), password_Controller.text.trim());
         Navigator.pushNamed(context, AdminHome.id);
 
         // Navigator.pushNamed(context, HomePage.id);

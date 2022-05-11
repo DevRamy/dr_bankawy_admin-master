@@ -9,7 +9,6 @@ class Product {
   int pPhone;
   String pDuration;
   String pPapers;
-  String pCategory;
   String pId;
   int pQuantity;
   Product(
@@ -17,7 +16,6 @@ class Product {
       this.pId,
       this.pName,
       this.pImage,
-      this.pCategory,
       this.pDescription,
       this.pPhone,
       this.pLatitude,

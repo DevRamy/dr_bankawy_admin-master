@@ -31,17 +31,17 @@ class _ManageProductsState extends State<ManageProducts> {
               var data = doc.data;
               products.add(
                 Product(
-                    pId: doc.documentID,
-                    pInterest: data[kProductInterest],
-                    pName: data[kProductName],
-                    pDescription: data[kProductDescription],
-                    pDuration: data[kProductDuration],
-                    pPhone: data[kProductPhone],
-                    pPapers: data[kProductPapers],
-                    pLongitude: data[kProductLongitude],
-                    pLatitude: data[kProductLatitude],
-                    pImage: data[kProductImage],
-                    pCategory: data[kProductCategory]),
+                  pId: doc.documentID,
+                  pInterest: data[kProductInterest],
+                  pName: data[kProductName],
+                  pDescription: data[kProductDescription],
+                  pDuration: data[kProductDuration],
+                  pPhone: data[kProductPhone],
+                  pPapers: data[kProductPapers],
+                  pLongitude: data[kProductLongitude],
+                  pLatitude: data[kProductLatitude],
+                  pImage: data[kProductImage],
+                ),
               );
             }
             return GridView.builder(

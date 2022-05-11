@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, unused_local_variable, must_be_immutable
+// ignore_for_file: deprecated_member_use, unused_local_variable, must_be_immutable, non_constant_identifier_names
 
 import 'package:dr_bankawy/provider/modelHud.dart';
 import 'package:dr_bankawy/screens/admin/adminHome.dart';
@@ -14,8 +14,11 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 class SignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   static String id = 'SignupScreen';
-  String _email, _password;
   final _auth = Auth();
+
+  final TextEditingController username_Controller = TextEditingController();
+  final TextEditingController email_Controller = TextEditingController();
+  final TextEditingController password_Controller = TextEditingController();
 
   SignupScreen({Key key}) : super(key: key);
   @override
@@ -48,25 +51,21 @@ class SignupScreen extends StatelessWidget {
                       height: height * .05,
                     ),
                     CustomTextField(
-                      onClick: (value) {},
+                      controller: username_Controller,
                       hint: 'اسم المستخدم',
                     ),
                     SizedBox(
                       height: height * .02,
                     ),
                     CustomTextField(
-                      onClick: (value) {
-                        _email = value;
-                      },
+                      controller: email_Controller,
                       hint: 'البريد الالكتروني',
                     ),
                     SizedBox(
                       height: height * .02,
                     ),
                     CustomTextField(
-                      onClick: (value) {
-                        _password = value;
-                      },
+                      controller: password_Controller,
                       hint: 'كلمة المرور',
                     ),
                     SizedBox(
@@ -86,7 +85,8 @@ class SignupScreen extends StatelessWidget {
                               _globalKey.currentState.save();
                               try {
                                 final authResult = await _auth.signUp(
-                                    _email.trim(), _password.trim());
+                                    email_Controller.text.trim(),
+                                    password_Controller.text.trim());
                                 modelhud.changeisLoading(false);
                                 Navigator.pushNamed(context, AdminHome.id);
                               } on PlatformException catch (e) {

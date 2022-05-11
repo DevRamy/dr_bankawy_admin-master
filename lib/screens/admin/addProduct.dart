@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, must_be_immutable
+// ignore_for_file: file_names, must_be_immutable, non_constant_identifier_names
 
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
@@ -9,15 +9,15 @@ class AddProduct extends StatelessWidget {
   static String id = 'AddProduct';
 
   // todo: values
-  String _name;
-  String _interest;
-  String _description;
-  String _image;
-  int _phone;
-  double _latitude;
-  double _longitude;
-  String _duration;
-  String _papers;
+  final TextEditingController name_Controller = TextEditingController();
+  final TextEditingController interest_Controller = TextEditingController();
+  final TextEditingController description_Controller = TextEditingController();
+  final TextEditingController image_Controller = TextEditingController();
+  final TextEditingController phone_Controller = TextEditingController();
+  final TextEditingController latitude_Controller = TextEditingController();
+  final TextEditingController longitude_Controller = TextEditingController();
+  final TextEditingController duration_Controller = TextEditingController();
+  final TextEditingController papers_Controller = TextEditingController();
 
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   final _store = Store();
@@ -32,9 +32,6 @@ class AddProduct extends StatelessWidget {
         child: ListView(
           // padding: EdgeInsets.all(20),
           children: <Widget>[
-            SizedBox(
-              height: mobileSize.height * 0.1,
-            ),
             // Todo: Page title
             const Center(
               child: Text(
@@ -51,20 +48,14 @@ class AddProduct extends StatelessWidget {
             // Todo: bank name
             CustomTextField(
               hint: 'اسم البنك',
-              type: TextInputType.text,
-              onClick: (value) {
-                _name = value;
-              },
+              controller: name_Controller,
             ),
             const SizedBox(
               height: 10,
             ),
             // Todo: bank image
             CustomTextField(
-              onClick: (value) {
-                _image = value;
-              },
-              type: TextInputType.text,
+              controller: image_Controller,
               hint: 'صورة البنك',
             ),
             const SizedBox(
@@ -72,10 +63,7 @@ class AddProduct extends StatelessWidget {
             ),
             // Todo: interest
             CustomTextField(
-              onClick: (value) {
-                _interest = value;
-              },
-              type: TextInputType.text,
+              controller: interest_Controller,
               hint: 'الفائدة',
             ),
             const SizedBox(
@@ -83,10 +71,7 @@ class AddProduct extends StatelessWidget {
             ),
             // Todo: duration
             CustomTextField(
-              onClick: (value) {
-                _duration = value;
-              },
-              type: TextInputType.text,
+              controller: duration_Controller,
               hint: 'مدة القرض',
             ),
             const SizedBox(
@@ -94,10 +79,7 @@ class AddProduct extends StatelessWidget {
             ),
             // Todo: description
             CustomTextField(
-              onClick: (value) {
-                _description = value;
-              },
-              type: TextInputType.multiline,
+              controller: description_Controller,
               hint: 'الوصف',
             ),
             const SizedBox(
@@ -113,10 +95,7 @@ class AddProduct extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
               child: CustomTextField(
-                onClick: (value) {
-                  _papers = value;
-                },
-                type: TextInputType.multiline,
+                controller: papers_Controller,
                 hint: 'الأوراق المطلوبة',
               ),
             ),
@@ -125,11 +104,8 @@ class AddProduct extends StatelessWidget {
             ),
             // Todo: phone
             CustomTextField(
-              onClick: (value) {
-                _phone = int.parse(value);
-              },
+              controller: phone_Controller,
               hint: 'الهاتف',
-              type: TextInputType.number,
             ),
             const SizedBox(
               height: 10,
@@ -153,20 +129,14 @@ class AddProduct extends StatelessWidget {
                   SizedBox(
                     width: mobileSize.width / 2,
                     child: CustomTextField(
-                      onClick: (value) {
-                        _latitude = double.parse(value);
-                      },
-                      type: TextInputType.number,
+                      controller: latitude_Controller,
                       hint: ' latitude',
                     ),
                   ),
                   SizedBox(
                     width: mobileSize.width / 2,
                     child: CustomTextField(
-                      onClick: (value) {
-                        _longitude = double.parse(value);
-                      },
-                      type: TextInputType.number,
+                      controller: longitude_Controller,
                       hint: ' longitude',
                     ),
                   ),
@@ -181,21 +151,29 @@ class AddProduct extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
                 onPressed: () {
-                  if (true) {
+                  if (name_Controller.text.isNotEmpty ||
+                      image_Controller.text.isNotEmpty ||
+                      interest_Controller.text.isNotEmpty ||
+                      description_Controller.text.isNotEmpty ||
+                      phone_Controller.text.isNotEmpty ||
+                      longitude_Controller.text.isNotEmpty ||
+                      latitude_Controller.text.isNotEmpty ||
+                      papers_Controller.text.isNotEmpty ||
+                      duration_Controller.text.isNotEmpty) {
                     if (_globalKey.currentState.validate()) {
                       _globalKey.currentState.save();
                       try {
                         _store.addProduct(Product(
-                            pName: _name,
-                            pImage: _image,
-                            pInterest: _interest,
-                            pDescription: _description,
-                            pPhone: _phone,
-                            pLatitude: _latitude,
-                            pLongitude: _longitude,
-                            pPapers: _papers,
-                            pDuration: _duration,
-                            pCategory: 'jackets'));
+                          pName: name_Controller.text,
+                          pImage: image_Controller.text,
+                          pInterest: interest_Controller.text,
+                          pDescription: description_Controller.text,
+                          pPhone: int.parse(phone_Controller.text),
+                          pLatitude: double.parse(longitude_Controller.text),
+                          pLongitude: double.parse(latitude_Controller.text),
+                          pPapers: papers_Controller.text,
+                          pDuration: duration_Controller.text,
+                        ));
 
                         showDialog(
                           context: context,
@@ -218,8 +196,6 @@ class AddProduct extends StatelessWidget {
                       }
                     }
                   } else {
-                    print(
-                        '$_name  \n $_image \n $_interest \n $_duration \n $_description \n $_papers \n $_papers \n $_phone \n $_longitude \n $_latitude}');
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => AlertDialog(

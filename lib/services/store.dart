@@ -14,7 +14,6 @@ class Store {
       kProductPhone: product.pPhone,
       kProductLatitude: product.pLatitude,
       kProductLongitude: product.pLongitude,
-      kProductCategory: product.pCategory,
       kProductDuration: product.pDuration,
       kProductPapers: product.pPapers,
       //kProductType: product.pType,
@@ -69,7 +68,6 @@ class Store {
         kProductQuantity: product.pQuantity,
         kProductLatitude: product.pLatitude,
         kProductLongitude: product.pLongitude,
-        kProductCategory: product.pCategory
       });
     }
   }

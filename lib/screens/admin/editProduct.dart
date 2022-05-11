@@ -9,15 +9,15 @@ import 'package:flutter/material.dart';
 class EditProduct extends StatelessWidget {
   static String id = 'EditProduct';
   // todo: values
-  String _name;
-  String _interest;
-  String _description;
-  String _image;
-  int _phone;
-  double _latitude;
-  double _longitude;
-  String _duration;
-  String _papers;
+  final TextEditingController name_Controller = TextEditingController();
+  final TextEditingController interest_Controller = TextEditingController();
+  final TextEditingController description_Controller = TextEditingController();
+  final TextEditingController image_Controller = TextEditingController();
+  final TextEditingController phone_Controller = TextEditingController();
+  final TextEditingController latitude_Controller = TextEditingController();
+  final TextEditingController longitude_Controller = TextEditingController();
+  final TextEditingController duration_Controller = TextEditingController();
+  final TextEditingController papers_Controller = TextEditingController();
 
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   final _store = Store();
@@ -54,20 +54,14 @@ class EditProduct extends StatelessWidget {
                 // Todo: bank name
                 CustomTextField(
                   hint: 'اسم البنك',
-                  type: TextInputType.text,
-                  onClick: (value) {
-                    _name = value;
-                  },
+                  controller: name_Controller,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 // Todo: bank image
                 CustomTextField(
-                  onClick: (value) {
-                    _image = value;
-                  },
-                  type: TextInputType.text,
+                  controller: image_Controller,
                   hint: 'صورة البنك',
                 ),
                 const SizedBox(
@@ -75,10 +69,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: interest
                 CustomTextField(
-                  onClick: (value) {
-                    _interest = value;
-                  },
-                  type: TextInputType.text,
+                  controller: interest_Controller,
                   hint: 'الفائدة',
                 ),
                 const SizedBox(
@@ -86,10 +77,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: duration
                 CustomTextField(
-                  onClick: (value) {
-                    _duration = value;
-                  },
-                  type: TextInputType.text,
+                  controller: duration_Controller,
                   hint: 'مدة القرض',
                 ),
                 const SizedBox(
@@ -97,10 +85,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: description
                 CustomTextField(
-                  onClick: (value) {
-                    _description = value;
-                  },
-                  type: TextInputType.multiline,
+                  controller: description_Controller,
                   hint: 'الوصف',
                 ),
                 const SizedBox(
@@ -116,10 +101,7 @@ class EditProduct extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: CustomTextField(
-                    onClick: (value) {
-                      _papers = value;
-                    },
-                    type: TextInputType.multiline,
+                    controller: papers_Controller,
                     hint: 'الأوراق المطلوبة',
                   ),
                 ),
@@ -128,11 +110,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: phone
                 CustomTextField(
-                  onClick: (value) {
-                    _phone = int.parse(value);
-                    ;
-                  },
-                  type: TextInputType.number,
+                  controller: phone_Controller,
                   hint: 'الهاتف',
                 ),
                 const SizedBox(
@@ -157,20 +135,14 @@ class EditProduct extends StatelessWidget {
                       SizedBox(
                         width: mobileSize.width / 2,
                         child: CustomTextField(
-                          onClick: (value) {
-                            _latitude = double.parse(value);
-                          },
-                          type: TextInputType.number,
+                          controller: latitude_Controller,
                           hint: ' latitude',
                         ),
                       ),
                       SizedBox(
                         width: mobileSize.width / 2,
                         child: CustomTextField(
-                          onClick: (value) {
-                            _longitude = double.parse(value);
-                          },
-                          type: TextInputType.number,
+                          controller: longitude_Controller,
                           hint: ' longitude',
                         ),
                       ),
@@ -182,21 +154,31 @@ class EditProduct extends StatelessWidget {
                 ),
                 FlatButton(
                   onPressed: () {
-                    if (true) {
+                    if (name_Controller.text.isNotEmpty ||
+                        image_Controller.text.isNotEmpty ||
+                        interest_Controller.text.isNotEmpty ||
+                        description_Controller.text.isNotEmpty ||
+                        phone_Controller.text.isNotEmpty ||
+                        longitude_Controller.text.isNotEmpty ||
+                        latitude_Controller.text.isNotEmpty ||
+                        papers_Controller.text.isNotEmpty ||
+                        duration_Controller.text.isNotEmpty) {
                       if (_globalKey.currentState.validate()) {
                         _globalKey.currentState.save();
 
                         try {
                           _store.editProduct({
-                            kProductName: _name,
-                            kProductImage: _image,
-                            kProductInterest: _interest,
-                            kProductDescription: _description,
-                            kProductPhone: _phone,
-                            kProductLongitude: _longitude,
-                            kProductLatitude: _latitude,
-                            kProductPapers: _papers,
-                            kProductDuration: _duration,
+                            kProductName: name_Controller.text,
+                            kProductImage: image_Controller.text,
+                            kProductInterest: interest_Controller.text,
+                            kProductDescription: description_Controller.text,
+                            kProductPhone: int.parse(phone_Controller.text),
+                            kProductLongitude:
+                                double.parse(longitude_Controller.text),
+                            kProductLatitude:
+                                double.parse(latitude_Controller.text),
+                            kProductPapers: papers_Controller.text,
+                            kProductDuration: duration_Controller.text,
                           }, product.pId);
 
                           showDialog(
