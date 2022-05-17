@@ -11,10 +11,20 @@ class CustomLogo extends StatelessWidget {
       child: Column(
         children: const [
           Image(
-            image: AssetImage('images/icons/buyicon.png'),
+            height: 100,
+            width: 100,
+            image: AssetImage(
+              'images/icons/buyicon.png',
+            ),
+          ),
+          SizedBox(
+            height: 10,
           ),
           Text(
             'دليلك الاول',
+          ),
+          SizedBox(
+            height: 10,
           ),
           Text(
             'في عالم القروض',

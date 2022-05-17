@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, file_names
+// ignore_for_file: must_be_immutable, file_names, non_constant_identifier_names, deprecated_member_use
 
 import 'package:dr_bankawy/constants.dart';
 import 'package:dr_bankawy/models/product.dart';
@@ -41,11 +41,7 @@ class EditProduct extends StatelessWidget {
                 // Todo: Page title
                 const Center(
                   child: Text(
-                    "قرض جديد",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    "تعديل القرض",
                   ),
                 ),
                 const SizedBox(
@@ -53,15 +49,15 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: bank name
                 CustomTextField(
-                  hint: 'اسم البنك',
-                  controller: name_Controller,
+                  hint: "اسم البنك",
+                  controller: name_Controller..text = product.pName,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 // Todo: bank image
                 CustomTextField(
-                  controller: image_Controller,
+                  controller: image_Controller..text = product.pImage,
                   hint: 'صورة البنك',
                 ),
                 const SizedBox(
@@ -69,7 +65,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: interest
                 CustomTextField(
-                  controller: interest_Controller,
+                  controller: interest_Controller..text = product.pInterest,
                   hint: 'الفائدة',
                 ),
                 const SizedBox(
@@ -77,7 +73,7 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: duration
                 CustomTextField(
-                  controller: duration_Controller,
+                  controller: duration_Controller..text = product.pDuration,
                   hint: 'مدة القرض',
                 ),
                 const SizedBox(
@@ -85,7 +81,8 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: description
                 CustomTextField(
-                  controller: description_Controller,
+                  controller: description_Controller
+                    ..text = product.pDescription,
                   hint: 'الوصف',
                 ),
                 const SizedBox(
@@ -101,8 +98,9 @@ class EditProduct extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: CustomTextField(
-                    controller: papers_Controller,
+                    controller: papers_Controller..text = product.pPapers,
                     hint: 'الأوراق المطلوبة',
+                    maxLines: 16,
                   ),
                 ),
                 const SizedBox(
@@ -110,7 +108,8 @@ class EditProduct extends StatelessWidget {
                 ),
                 // Todo: phone
                 CustomTextField(
-                  controller: phone_Controller,
+                  controller: phone_Controller
+                    ..text = product.pPhone.toString(),
                   hint: 'الهاتف',
                 ),
                 const SizedBox(
@@ -120,10 +119,6 @@ class EditProduct extends StatelessWidget {
                 const Center(
                   child: Text(
                     "الموقع",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -135,14 +130,18 @@ class EditProduct extends StatelessWidget {
                       SizedBox(
                         width: mobileSize.width / 2,
                         child: CustomTextField(
-                          controller: latitude_Controller,
+                          keyboardType: TextInputType.number,
+                          controller: latitude_Controller
+                            ..text = product.pLatitude.toString(),
                           hint: ' latitude',
                         ),
                       ),
                       SizedBox(
                         width: mobileSize.width / 2,
                         child: CustomTextField(
-                          controller: longitude_Controller,
+                          keyboardType: TextInputType.number,
+                          controller: longitude_Controller
+                            ..text = product.pLongitude.toString(),
                           hint: ' longitude',
                         ),
                       ),

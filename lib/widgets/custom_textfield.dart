@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
+  int maxLines;
+  TextInputType keyboardType;
   String errorMessage(String str) {
     switch (hint) {
       case 'Enter your name':
@@ -17,8 +19,12 @@ class CustomTextField extends StatelessWidget {
     }
   }
 
-  const CustomTextField(
-      {Key key, @required this.controller, @required this.hint})
+  CustomTextField(
+      {Key key,
+      @required this.controller,
+      @required this.hint,
+      int maxLines,
+      TextInputType keyboardType})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -28,8 +34,10 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         obscureText: hint == 'كلمة المرور' ? true : false,
         cursorColor: kThiredColor,
+        maxLines: maxLines ?? 1,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(2),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 30),
           hintText: hint,
           filled: true,
           fillColor: kThiredColor,

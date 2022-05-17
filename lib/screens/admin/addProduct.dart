@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, must_be_immutable, non_constant_identifier_names
+// ignore_for_file: file_names, must_be_immutable, non_constant_identifier_names, deprecated_member_use
 
 import 'package:dr_bankawy/models/product.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
@@ -37,7 +37,6 @@ class AddProduct extends StatelessWidget {
               child: Text(
                 "قرض جديد",
                 style: TextStyle(
-                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -115,7 +114,6 @@ class AddProduct extends StatelessWidget {
               child: Text(
                 "الموقع",
                 style: TextStyle(
-                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -129,6 +127,7 @@ class AddProduct extends StatelessWidget {
                   SizedBox(
                     width: mobileSize.width / 2,
                     child: CustomTextField(
+                      keyboardType: TextInputType.number,
                       controller: latitude_Controller,
                       hint: ' latitude',
                     ),
@@ -136,6 +135,7 @@ class AddProduct extends StatelessWidget {
                   SizedBox(
                     width: mobileSize.width / 2,
                     child: CustomTextField(
+                      keyboardType: TextInputType.number,
                       controller: longitude_Controller,
                       hint: ' longitude',
                     ),
@@ -143,9 +143,7 @@ class AddProduct extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 50,
-            ),
+
             // Todo: add button
             Padding(
               padding: const EdgeInsets.all(8.0),

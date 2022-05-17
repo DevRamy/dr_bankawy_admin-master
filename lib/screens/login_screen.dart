@@ -74,10 +74,38 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         height: height * .03,
                       ),
-                      CustomTextField(
-                        controller: password_Controller,
-                        hint: 'كلمة المرور',
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: TextFormField(
+                          controller: password_Controller,
+                          obscureText: true,
+                          cursorColor: kThiredColor,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 30),
+                            hintText: "كلمة المرور",
+                            filled: true,
+                            fillColor: kThiredColor,
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide:
+                                    const BorderSide(color: Colors.white)),
+                          ),
+                        ),
                       ),
+                      // CustomTextField(
+                      //   controller: password_Controller,
+                      //   hint: 'كلمة المرور',
+                      //   maxLines: null,
+                      // ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Row(
@@ -105,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: height * .05,
+                        height: height * .01,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40),

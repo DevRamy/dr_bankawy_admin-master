@@ -44,75 +44,71 @@ class _ManageProductsState extends State<ManageProducts> {
                 ),
               );
             }
-            return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: .8,
-              ),
-              itemBuilder: (context, index) => Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: GestureDetector(
-                  onTapUp: (details) async {
-                    double dx = details.globalPosition.dx;
-                    double dy = details.globalPosition.dy;
-                    double dx2 = MediaQuery.of(context).size.width - dx;
-                    double dy2 = MediaQuery.of(context).size.width - dy;
-                    await showMenu(
-                        context: context,
-                        position: RelativeRect.fromLTRB(dx, dy, dx2, dy2),
-                        items: [
-                          MyPopupMenuItem(
-                            onClick: () {
-                              Navigator.pushNamed(context, EditProduct.id,
-                                  arguments: products[index]);
-                            },
-                            child: const Text('Edit'),
-                          ),
-                          MyPopupMenuItem(
-                            onClick: () {
-                              _store.deleteProduct(products[index].pId);
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Delete'),
-                          ),
-                        ]);
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned.fill(
-                        child: Image(
-                          fit: BoxFit.fitWidth,
-                          image: NetworkImage(products[index].pImage),
+            return ListView.builder(
+              itemBuilder: (context, index) => GestureDetector(
+                onTapUp: (details) async {
+                  double dx = details.globalPosition.dx;
+                  double dy = details.globalPosition.dy;
+                  double dx2 = MediaQuery.of(context).size.width - dx;
+                  double dy2 = MediaQuery.of(context).size.width - dy;
+                  await showMenu(
+                      context: context,
+                      position: RelativeRect.fromLTRB(dx, dy, dx2, dy2),
+                      items: [
+                        MyPopupMenuItem(
+                          onClick: () {
+                            Navigator.pushNamed(context, EditProduct.id,
+                                arguments: products[index]);
+                          },
+                          child: const Text('Edit'),
+                        ),
+                        MyPopupMenuItem(
+                          onClick: () {
+                            _store.deleteProduct(products[index].pId);
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Delete'),
+                        ),
+                      ]);
+                },
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              products[index].pName,
+                            ),
+                            Text(products[index].pDescription.length > 11
+                                ? products[index]
+                                        .pDescription
+                                        .substring(0, 10) +
+                                    '...'
+                                : products[index].pDescription),
+                            const Text("قرض شخصي"),
+                          ],
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 60,
-                          color: Colors.white,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  products[index].pName,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  '\$ ${products[index].pInterest}',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
-                                )
-                              ],
-                            ),
+                      const Spacer(),
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            products[index].pImage,
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            fit: BoxFit.contain,
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -127,3 +123,22 @@ class _ManageProductsState extends State<ManageProducts> {
     );
   }
 }
+
+ // Column(
+                  //   children: <Widget>[
+                  //     Positioned.fill(
+                  //       child: Image(
+                  //         fit: BoxFit.fitWidth,
+                  //         image: NetworkImage(products[index].pImage),
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       products[index].pName,
+                  //       style: const TextStyle(fontWeight: FontWeight.bold),
+                  //     ),
+                  //     Text(
+                  //       '\$ ${products[index].pInterest}',
+                  //       style: const TextStyle(fontWeight: FontWeight.bold),
+                  //     )
+                  //   ],
+                  // ),

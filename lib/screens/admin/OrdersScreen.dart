@@ -79,7 +79,6 @@ class OrdersScreen extends StatelessWidget {
                             );
                     },
                     child: Container(
-                      height: MediaQuery.of(context).size.height * .2,
                       decoration: BoxDecoration(
                         color: orders[index].isReviewed
                             ? orders[index].isAccepted
