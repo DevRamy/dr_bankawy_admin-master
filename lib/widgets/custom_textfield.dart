@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         obscureText: hint == 'كلمة المرور' ? true : false,
         cursorColor: kThiredColor,
-        maxLines: maxLines ?? 1,
+        maxLines: maxLines,
         keyboardType: keyboardType,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(horizontal: 30),

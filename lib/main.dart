@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const MaterialApp(
+            title: "dr bankawy admin",
             debugShowCheckedModeBanner: false,
             home: Scaffold(
               body: Center(
