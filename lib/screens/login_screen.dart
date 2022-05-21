@@ -25,8 +25,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = Auth();
 
-  final adminPassword = 'Admin1234';
-
   bool keepMeLoggedIn = false;
 
   final TextEditingController email_Controller = TextEditingController();
@@ -36,10 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      // appBar: AppBar(
-
-      // ),
-      backgroundColor: kThiredColor,
       body: ModalProgressHUD(
         inAsyncCall: Provider.of<ModelHud>(context).isLoading,
         child: Form(
@@ -52,9 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: height * 0.1,
                 ),
                 const CustomLogo(),
-                SizedBox(
-                  height: height * 0.1,
-                ),
+                // SizedBox(
+                //   height: height * 0.1,
+                // ),
                 Container(
                   decoration: const BoxDecoration(
                       color: kMainColor,

@@ -39,7 +39,6 @@ class AdminHome extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
@@ -58,7 +57,6 @@ class AdminHome extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
@@ -77,7 +75,6 @@ class AdminHome extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
@@ -99,7 +96,6 @@ class AdminHome extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),

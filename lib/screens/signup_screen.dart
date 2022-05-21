@@ -2,6 +2,7 @@
 
 import 'package:dr_bankawy/provider/modelHud.dart';
 import 'package:dr_bankawy/screens/admin/adminHome.dart';
+import 'package:dr_bankawy/screens/login_screen.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
 import 'package:dr_bankawy/widgets/cutsom_logo.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: kThiredColor,
+      // backgroundColor: kThiredColor,
       body: ModalProgressHUD(
         inAsyncCall: Provider.of<ModelHud>(context).isLoading,
         child: Form(
@@ -36,9 +37,9 @@ class SignupScreen extends StatelessWidget {
                 height: height * 0.1,
               ),
               const CustomLogo(),
-              SizedBox(
-                height: height * 0.1,
-              ),
+              // SizedBox(
+              //   height: height * 0.1,
+              // ),
               Container(
                 decoration: const BoxDecoration(
                     color: kMainColor,
@@ -64,10 +65,38 @@ class SignupScreen extends StatelessWidget {
                     SizedBox(
                       height: height * .02,
                     ),
-                    CustomTextField(
-                      controller: password_Controller,
-                      hint: 'كلمة المرور',
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: TextFormField(
+                        controller: password_Controller,
+                        obscureText: true,
+                        cursorColor: kThiredColor,
+                        decoration: InputDecoration(
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 30),
+                          hintText: "كلمة المرور",
+                          filled: true,
+                          fillColor: kThiredColor,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  const BorderSide(color: Colors.white)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  const BorderSide(color: Colors.white)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  const BorderSide(color: Colors.white)),
+                        ),
+                      ),
                     ),
+                    // CustomTextField(
+                    //   controller: password_Controller,
+                    //   hint: 'كلمة المرور',
+                    //   maxLines: 1,
+                    // ),
                     SizedBox(
                       height: height * .05,
                     ),
@@ -117,7 +146,11 @@ class SignupScreen extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
                           },
                           child: const Text(
                             'الدخول',
