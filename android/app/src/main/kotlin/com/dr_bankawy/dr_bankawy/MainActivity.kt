@@ -1,4 +1,4 @@
-package com.dr.bankaway
+package com.dr.bankaway_admin
 
 import io.flutter.embedding.android.FlutterActivity
 

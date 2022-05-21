@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1035158064272",
+    "firebase_url": "https://dr-bankawy-default-rtdb.firebaseio.com",
     "project_id": "dr-bankawy",
     "storage_bucket": "dr-bankawy.appspot.com"
   },
@@ -10,6 +11,35 @@
         "mobilesdk_app_id": "1:1035158064272:android:124131a5cc6a1a92421c15",
         "android_client_info": {
           "package_name": "com.dr.bankaway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035158064272-a027rqbci3vi1gj2si05ffhu7dv5luls.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoDHBH7pmYiYpdinxaUBcspYUSHMIZ9Kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035158064272-a027rqbci3vi1gj2si05ffhu7dv5luls.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035158064272:android:ed4f530c466588a9421c15",
+        "android_client_info": {
+          "package_name": "com.dr.bankaway_admin"
         }
       },
       "oauth_client": [

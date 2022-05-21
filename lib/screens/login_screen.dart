@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
-import 'package:dr_bankawy/provider/adminMode.dart';
 import 'package:dr_bankawy/screens/admin/adminHome.dart';
 import 'package:dr_bankawy/screens/signup_screen.dart';
 import 'package:dr_bankawy/widgets/custom_textfield.dart';
